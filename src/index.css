@@ -1,0 +1,356 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-paper: #f3eee6;
+  --color-paper-deep: #ebe4d8;
+  --color-ink: #2b2a28;
+  --color-ink-soft: #5c5850;
+  --color-ink-faint: #8c867b;
+  --color-line: #e2dacc;
+  --color-hours: #ee7a3a;
+  --color-hours-soft: #fbe6d6;
+  --color-consumer: #d9a23c;
+  --color-supplier: #3e9c95;
+  --color-salary: #6e9e5a;
+  --color-tax: #6e62b6;
+  --color-gov: #3d7bc0;
+  --color-up: #3f8a5a;
+  --color-down: #b4543f;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(43, 42, 40, 0.08);
+  box-shadow:
+    0 1px 2px rgba(43, 42, 40, 0.04),
+    0 8px 24px -12px rgba(43, 42, 40, 0.18);
+  border-radius: 14px;
+}
+
+/* ── Town (SVG) animations ───────────────────────────────────────── */
+
+.clickable {
+  cursor: pointer;
+}
+.clickable:hover {
+  filter: brightness(1.05) saturate(1.05);
+}
+
+.person {
+  cursor: pointer;
+}
+
+.rise {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: rise 900ms cubic-bezier(0.2, 0.9, 0.25, 1.2) both;
+}
+@keyframes rise {
+  from {
+    transform: scaleY(0.02);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fade-in 1200ms ease both;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.smoke circle {
+  animation: smoke 3.2s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.smoke circle:nth-child(2) {
+  animation-delay: 1.6s;
+}
+.smoke.dark circle {
+  opacity: 0.8;
+}
+@keyframes smoke {
+  0% {
+    transform: translate(0, 6px) scale(0.5);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(8px, -14px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink 1.4s steps(2, jump-none) infinite;
+}
+.blink-soft {
+  animation: blink-soft 2.4s ease-in-out infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+@keyframes blink-soft {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.spin {
+  animation: spin 3.4s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ping {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ping 2.6s ease-out infinite;
+}
+.ping.delay {
+  animation-delay: 1.3s;
+}
+@keyframes ping {
+  from {
+    transform: scale(0.3);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.ripple {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ripple 2.8s ease-out infinite;
+}
+@keyframes ripple {
+  from {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.river-flow {
+  animation: river 8s linear infinite;
+}
+@keyframes river {
+  to {
+    stroke-dashoffset: -200;
+  }
+}
+
+.flag {
+  transform-box: fill-box;
+  transform-origin: 0 50%;
+  animation: flag 2.2s ease-in-out infinite;
+}
+@keyframes flag {
+  50% {
+    transform: scaleX(0.82) skewY(4deg);
+  }
+}
+
+.sway {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: sway 2.4s ease-in-out infinite;
+}
+@keyframes sway {
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
+.construction {
+  animation: construction 1.6s ease-in-out infinite;
+}
+@keyframes construction {
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.march {
+  animation: march 1s linear infinite;
+}
+@keyframes march {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+
+.fresh-glow {
+  animation: fresh 5s ease-out both;
+}
+@keyframes fresh {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.badge-pulse {
+  animation: badge 600ms ease-out;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes badge {
+  0% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ── Flywheel ───────────────────────────────────────────────────── */
+
+.flywheel {
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+.flywheel.on {
+  opacity: 1;
+}
+.fw-flow {
+  animation: fw-flow 2.4s linear infinite;
+}
+@keyframes fw-flow {
+  to {
+    stroke-dashoffset: -52;
+  }
+}
+.fw-node {
+  transition: opacity 300ms ease;
+}
+.fw-node rect {
+  transition:
+    fill 300ms ease,
+    stroke-width 300ms ease;
+}
+.fw-node.fw-active rect {
+  fill: #fff4ea;
+  stroke-width: 3.5;
+}
+.fw-node.fw-pulse rect {
+  animation: fw-pulse 700ms ease-out;
+}
+@keyframes fw-pulse {
+  0% {
+    fill: #ffe2c8;
+  }
+  100% {
+    fill: #ffffff;
+  }
+}
+
+/* ── Controls ───────────────────────────────────────────────────── */
+
+input[type='range'].slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--track-fill, #2b2a28) 0%, var(--track-fill, #2b2a28) var(--pct, 50%), #e4ddd0 var(--pct, 50%));
+  outline: none;
+}
+input[type='range'].slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--track-fill, #2b2a28);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+input[type='range'].slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--track-fill, #2b2a28);
+  cursor: pointer;
+}
+
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(43, 42, 40, 0.15) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .fade-in,
+  .smoke circle,
+  .spin,
+  .ping,
+  .ripple,
+  .river-flow,
+  .flag,
+  .sway,
+  .fw-flow {
+    animation: none !important;
+  }
+}
